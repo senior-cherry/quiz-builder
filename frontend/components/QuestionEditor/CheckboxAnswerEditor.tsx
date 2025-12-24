@@ -77,33 +77,36 @@ export default function CheckboxAnswerEditor({
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <label className="block text-sm font-medium text-gray-700">
+      <div className="flex items-center justify-between pb-2 border-b border-gray-200">
+        <label className="block text-sm font-semibold text-gray-700">
           Options
         </label>
         <button
           type="button"
           onClick={handleAddOption}
-          className="px-3 py-1 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300 transition-colors text-sm"
+          className="px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-500 text-white rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all duration-200 text-sm font-semibold shadow-md hover:shadow-lg"
         >
           + Add Option
         </button>
       </div>
       {question.options?.map((option, optIndex) => (
-        <div key={optIndex} className="flex items-center gap-2">
+        <div
+          key={optIndex}
+          className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border-2 border-gray-200 hover:border-blue-300 transition-all duration-200"
+        >
           <input
             type="checkbox"
             checked={
               question.correctOptions?.includes(optIndex.toString()) || false
             }
             onChange={() => handleToggleCorrectOption(optIndex)}
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            className="h-5 w-5 text-blue-600 focus:ring-2 focus:ring-blue-500 border-gray-300 rounded cursor-pointer"
           />
           <input
             type="text"
             value={option}
             onChange={(e) => handleUpdateOption(optIndex, e.target.value)}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            className="flex-1 px-4 py-2.5 border-2 border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 bg-white"
             placeholder={`Option ${optIndex + 1}`}
             required
           />
@@ -111,7 +114,8 @@ export default function CheckboxAnswerEditor({
             <button
               type="button"
               onClick={() => handleRemoveOption(optIndex)}
-              className="text-red-600 hover:text-red-800 px-2"
+              className="px-3 py-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-all duration-200 font-bold text-lg border border-transparent hover:border-red-200"
+              aria-label="Remove option"
             >
               ×
             </button>
@@ -119,9 +123,22 @@ export default function CheckboxAnswerEditor({
         </div>
       ))}
       {question.correctOptions && question.correctOptions.length === 0 && (
-        <p className="text-sm text-red-600">
-          Please select at least one correct option
-        </p>
+        <div className="p-3 bg-red-50 border-2 border-red-200 rounded-lg">
+          <p className="text-sm text-red-700 font-semibold flex items-center">
+            <svg
+              className="h-4 w-4 mr-2"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fillRule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                clipRule="evenodd"
+              />
+            </svg>
+            Please select at least one correct option
+          </p>
+        </div>
       )}
     </div>
   );

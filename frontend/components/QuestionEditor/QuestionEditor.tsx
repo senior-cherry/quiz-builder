@@ -32,16 +32,16 @@ export default function QuestionEditor({
   onToggleCorrectOption,
 }: QuestionEditorProps) {
   return (
-    <div className="border border-gray-200 rounded-lg p-4 sm:p-6 space-y-4">
-      <div className="flex items-start justify-between">
-        <h3 className="text-lg font-medium text-gray-900">
+    <div className="border-2 border-gray-200 rounded-xl p-5 sm:p-6 space-y-5 bg-gradient-to-br from-white to-gray-50 shadow-sm hover:shadow-md transition-all duration-200">
+      <div className="flex items-start justify-between pb-4 border-b border-gray-200">
+        <h3 className="text-lg font-bold text-gray-900">
           Question {index + 1}
         </h3>
         {canRemove && (
           <button
             type="button"
             onClick={onRemove}
-            className="text-red-600 hover:text-red-800 text-sm font-medium"
+            className="px-3 py-1.5 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg text-sm font-semibold transition-all duration-200 border border-transparent hover:border-red-200"
           >
             Remove
           </button>
@@ -51,7 +51,7 @@ export default function QuestionEditor({
       <div>
         <label
           htmlFor={`question-${index}`}
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-semibold text-gray-700 mb-2"
         >
           Question Text
         </label>
@@ -59,9 +59,9 @@ export default function QuestionEditor({
           id={`question-${index}`}
           value={question.text}
           onChange={(e) => onUpdate("text", e.target.value)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 resize-none"
           placeholder="Enter your question"
-          rows={2}
+          rows={3}
           required
         />
       </div>
@@ -69,7 +69,7 @@ export default function QuestionEditor({
       <div>
         <label
           htmlFor={`type-${index}`}
-          className="block text-sm font-medium text-gray-700 mb-2"
+          className="block text-sm font-semibold text-gray-700 mb-2"
         >
           Question Type
         </label>
@@ -77,7 +77,7 @@ export default function QuestionEditor({
           id={`type-${index}`}
           value={question.type}
           onChange={(e) => onTypeChange(e.target.value as QuestionType)}
-          className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 font-medium bg-white"
         >
           <option value="BOOLEAN">True/False</option>
           <option value="INPUT">Short Answer</option>

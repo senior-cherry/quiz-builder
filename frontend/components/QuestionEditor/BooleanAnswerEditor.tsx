@@ -16,31 +16,31 @@ export default function BooleanAnswerEditor({
 }: BooleanAnswerEditorProps) {
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-700 mb-2">
+      <label className="block text-sm font-semibold text-gray-700 mb-3">
         Correct Answer
       </label>
-      <div className="flex gap-4">
-        <label className="flex items-center">
+      <div className="flex gap-3">
+        <label className="flex items-center cursor-pointer">
           <input
             type="radio"
             name={`boolean-${index}`}
             value="true"
             checked={question.correctAnswer === "true"}
             onChange={(e) => onUpdate("correctAnswer", e.target.value)}
-            className="mr-2"
+            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 mr-3"
           />
-          True
+          <span className="text-gray-700 font-medium">True</span>
         </label>
-        <label className="flex items-center">
+        <label className="flex items-center cursor-pointer">
           <input
             type="radio"
             name={`boolean-${index}`}
             value="false"
             checked={question.correctAnswer === "false"}
             onChange={(e) => onUpdate("correctAnswer", e.target.value)}
-            className="mr-2"
+            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 mr-3"
           />
-          False
+          <span className="text-gray-700 font-medium">False</span>
         </label>
       </div>
     </div>
